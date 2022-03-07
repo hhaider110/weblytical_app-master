@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_gen: ^4.1.5
   http: ^0.13.4
   # flutter_svg: ^1.0.3
   provider: ^6.0.2
@@ -53,6 +54,8 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
 flutter:
+  generate: true
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

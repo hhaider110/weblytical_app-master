@@ -1,0 +1,16 @@
+{
+  "welcomeText": "Welcome To AimsysCloud",
+
+    "signintoyouraccount": "Sign in to your account",
+
+  "signUpTextRow": "Sign up",
+   "emailTextFormField": "Email ID",
+
+      "passwordTextFormField": "Password",
+
+        "forgetPassTextRow": "Forgot your password?",
+
+        "recover": "Recover"
+
+      }
+

@@ -11,6 +11,12 @@ import 'package:ui/ui/widgets/textformfield.dart';
 import 'package:ui/utils/responsive.dart';
 import 'package:ui/utils/validator.dart';
 
+import '../../locale_provider.dart';
+import '../widgets/language_picker_widget.dart';
+
+
+
+
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
 
@@ -43,9 +49,17 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _height = MediaQuery.of(context).size.height;
-    _width = MediaQuery.of(context).size.width;
-    _pixelRatio = MediaQuery.of(context).devicePixelRatio;
+    _height = MediaQuery
+        .of(context)
+        .size
+        .height;
+    _width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    _pixelRatio = MediaQuery
+        .of(context)
+        .devicePixelRatio;
     _large = ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
     _medium = ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
     return Material(
@@ -58,6 +72,8 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Column(
             children: [
               clipShape(),
+              LanguagePickerWidget(),
+              const SizedBox(width: 12),
               welcomeTextRow(),
               signInTextRow(),
               form(),
@@ -135,6 +151,11 @@ class _SignInScreenState extends State<SignInScreen> {
       ],
     );
   }
+
+
+
+
+
 
   Widget welcomeTextRow() {
     return Container(
@@ -299,4 +320,5 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
+
 }

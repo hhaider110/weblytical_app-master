@@ -1,6 +1,8 @@
 // TODO Implement this library.
 import 'package:flutter/material.dart';
 
+import '../l10n/l10n.dart';
+
 
 class MenuController extends ChangeNotifier {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -12,4 +14,5 @@ class MenuController extends ChangeNotifier {
       _scaffoldKey.currentState!.openDrawer();
     }
   }
+
 }
