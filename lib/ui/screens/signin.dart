@@ -1,8 +1,10 @@
-// ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 //import 'package:http/http.dart';
 import 'package:ui/constants/constants.dart';
+import 'package:ui/gen_l10n/ui.dart';
+import 'package:ui/l10n/l10n.dart';
 import 'package:ui/ui/widgets/custom_button.dart';
 import 'package:ui/ui/widgets/custom_shape.dart';
 import 'package:ui/ui/widgets/model_class.dart';
@@ -49,6 +51,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+    final locale = provider.locale ?? Locale('en');
     _height = MediaQuery
         .of(context)
         .size
@@ -72,18 +76,47 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Column(
             children: [
               clipShape(),
-              LanguagePickerWidget(),
-              const SizedBox(width: 12),
-              welcomeTextRow(),
-              signInTextRow(),
-              form(),
-              forgetPassTextRow(),
+              //    LanguagePickerWidget(),
+              DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  value: locale,
+                  icon: Container(width: 12),
+                  items: L10n.all.map(
+                        (locale) {
+                      final flag = L10n.getFlag(locale.languageCode);
+
+                      return DropdownMenuItem(
+                        child: Center(
+                          child: Text(
+                            flag,
+                            style: TextStyle(fontSize: 32),
+                          ),
+                        ),
+                        value: locale,
+                        onTap: () {
+                          final provider =
+                          Provider.of<LocaleProvider>(context, listen: false);
+                          print(provider.locale);
+
+                          provider.setLocale(locale);
+                        },
+                      );
+                    },
+                  ).toList(),
+                  onChanged: (_) {},
+                ),
+              ),
+              SizedBox(width: 12),
+              welcomeTextRow(ui.of(context)!.welcomeText),
+              signInTextRow(ui.of(context)!.signintoyouraccount),
+              form(ui.of(context)!.emailTextFormField ),
+              forgetPassTextRow(ui.of(context)!.forgetPassTextRow),
               SizedBox(height: _height / 12),
               CustomButton(
                 large: _large,
                 width: _width,
                 medium: _medium,
-                text: 'SIGN IN',
+                text:   ui.of(context)!.sizedBox,
                 onPressed: () {
                   // Scaffold.of(context).showSnackBar(
                   //   const SnackBar(
@@ -99,7 +132,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   }
                 },
               ),
-              signUpTextRow(),
+              signUpTextRow(ui.of(context)!.sizedBox),
             ],
           ),
         ),
@@ -157,13 +190,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
 
 
-  Widget welcomeTextRow() {
+  Widget welcomeTextRow(text) {
     return Container(
       margin: EdgeInsets.only(left: _width / 20, top: _height / 100),
       child: Row(
         children: <Widget>[
           Text(
-            "Welcome To AimsysCloud",
+            text,
             style: TextStyle(
               color: contrastColor,
               fontWeight: FontWeight.bold,
@@ -177,13 +210,13 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  Widget signInTextRow() {
+  Widget signInTextRow(text) {
     return Container(
       margin: EdgeInsets.only(left: _width / 15.0, top: _height / 60.0),
       child: Row(
         children: <Widget>[
           Text(
-            "Sign in to your account",
+            text,
             style: TextStyle(
               color: contrastColor,
               fontWeight: FontWeight.w200,
@@ -195,7 +228,7 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  Widget form() {
+  Widget form(text) {
     return Container(
       margin: EdgeInsets.only(
         left: _width / 12.0,
@@ -206,16 +239,16 @@ class _SignInScreenState extends State<SignInScreen> {
         key: _key,
         child: Column(
           children: <Widget>[
-            emailTextFormField(),
+            emailTextFormField(ui.of(context)!.emailTextFormField),
             SizedBox(height: _height / 40.0),
-            passwordTextFormField(),
+            passwordTextFormField(ui.of(context)!.passwordTextFormField ),
           ],
         ),
       ),
     );
   }
 
-  Widget emailTextFormField() {
+  Widget emailTextFormField(text) {
     return CustomTextField(
       validator: (email) {
         setState(() {
@@ -226,11 +259,11 @@ class _SignInScreenState extends State<SignInScreen> {
       keyboardType: TextInputType.emailAddress,
       textEditingController: emailController,
       icon: Icons.email,
-      hint: "Email ID",
+      hint: text,
     );
   }
 
-  Widget passwordTextFormField() {
+  Widget passwordTextFormField(text) {
     return PasswordField(
       validator: (pass) {
         setState(() {
@@ -255,18 +288,18 @@ class _SignInScreenState extends State<SignInScreen> {
           });
         },
       ),
-      hint: "Password",
+      hint: text,
     );
   }
 
-  Widget forgetPassTextRow() {
+  Widget forgetPassTextRow(text) {
     return Container(
       margin: EdgeInsets.only(top: _height / 40.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Forgot your password?",
+            text,
             style: TextStyle(
                 color: contrastColor,
                 fontWeight: FontWeight.w400,
@@ -276,25 +309,27 @@ class _SignInScreenState extends State<SignInScreen> {
             width: 5,
           ),
           GestureDetector(
+
             onTap: () {},
-            child: const Text(
-              "Recover",
+            child:  Text(
+              ui.of(context)!.recover,
               style: TextStyle(fontWeight: FontWeight.w600, color: buttonColor),
             ),
+
           )
         ],
       ),
     );
   }
 
-  Widget signUpTextRow() {
+  Widget signUpTextRow(text) {
     return Container(
       margin: EdgeInsets.only(top: _height / 120.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Don't have an account?",
+            ui.of(context)!.signUpText,
             style: TextStyle(
                 color: contrastColor,
                 fontWeight: FontWeight.w400,
@@ -308,7 +343,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Navigator.of(context).pushNamed(SIGN_UP);
             },
             child: Text(
-              "Sign up",
+              ui.of(context)!.signUpTextRow ,
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 color: buttonColor,

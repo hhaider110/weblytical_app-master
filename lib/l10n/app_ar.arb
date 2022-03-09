@@ -1,13 +1,29 @@
 {
-    "welcomeText": "Bienvenido a AimsysCloud",
+    "welcomeText": "مرحبًا بك فيأهداف",
 
-    "signintoyouraccount": "Iniciar sesión en su cuenta",
+    "signintoyouraccount": "Iتسجيل الدخول إلى حسابك",
 
-    "SignupTextRow": "recuperar",
+    "SignupTextRow": "اشتراك",
 
-    "emailTextFormField": "Identificación de correo",
+    "emailTextFormField": "عنوان الايميل",
 
-    "forgetPassTextRow": "Clave",
+    "passwordTextFormField" :"كلمه السر",
 
-    "recover": "Inscribirse"
+    "forgetPassTextRow": "نسيت رقمك السري؟",
+
+    "SignUpText": "ليس لديك حساب؟",
+
+    "recover": "استعادة",
+
+    "sizedBox": "تسجيل الدخول",
+
+   "phone": " هاتف",
+
+    "name": "اسم",
+
+   " city": " مدينة",
+
+    "terms": "أوافق على جميع الشروط والأحكام",
+
+   "invalidNumber":"رقم الجوال غير صالح"
 }

@@ -1,0 +1,27 @@
+{
+"welcomeText": "AimsysCloud'a Hoş Geldiniz",
+
+"signintoyouraccount": "hesabınıza giriş yapın",
+
+"signUpTextRow": "Üye olmak",
+"emailTextFormField": "Email kimliği",
+
+"passwordTextFormField": "ŞİFRE'",
+
+"forgetPassTextRow": "Parolanızı mı unuttunuz?",
+
+"recover": "Kurtarmak",
+
+"signUpText" : "Hesabınız yok mu?",
+
+"sizedBox": "Kayıt olmak",
+
+"phone": "Telefon",
+
+"name": "İsim",
+
+"city": " Şehir ",
+"terms":"Tüm hüküm ve koşulları kabul ediyorum",
+"invalidNumber":"geçersiz telefon numarası"
+}
+

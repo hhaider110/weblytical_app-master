@@ -23,11 +23,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    //final provider = Provider.of<MenuController>(context);
     return MultiProvider(
 
       providers: [
@@ -35,30 +35,35 @@ class MyApp extends StatelessWidget {
           create: (context) => MenuController(),
           //provider: locale => Provider.of<MenuController>(context).locale
         ),
-          ListenableProvider(create: (context) => LocaleProvider()),
+        ChangeNotifierProvider(create: (context) => LocaleProvider()),
       ],
+      builder: (context ,child){
+        final provider = Provider.of<LocaleProvider>(context);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "Login",
+          locale: provider.locale,
+          supportedLocales: L10n.all,
+          localizationsDelegates: [
+            ui.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          routes: <String, WidgetBuilder>{
+            SIGN_IN: (BuildContext context) =>  const SignInPage(),
+            SIGN_UP: (BuildContext context) =>  const SignUpScreen(),
+            DASHBOARD: (BuildContext context) =>  const DashBoardScreen(),
+            HOME: (BuildContext context) => const Home(),
+          },
+          initialRoute: SIGN_IN,
+          // home: PopoverExample(),
 
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "Login",
-      //  locale: provider.locale,
-        supportedLocales: L10n.all,
-        localizationsDelegates: [
-          ui.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-        routes: <String, WidgetBuilder>{
-          SIGN_IN: (BuildContext context) =>  const SignInPage(),
-          SIGN_UP: (BuildContext context) =>  const SignUpScreen(),
-          DASHBOARD: (BuildContext context) =>  const DashBoardScreen(),
-          HOME: (BuildContext context) => const Home(),
-        },
-        initialRoute: SIGN_IN,
-        // home: PopoverExample(),
+        );
+      },
 
-      ),
+
+
     );
   }
 }

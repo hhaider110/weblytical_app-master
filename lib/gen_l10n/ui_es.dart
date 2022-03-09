@@ -30,4 +30,21 @@ class uiEs extends ui {
 
   @override
   String get recover => 'Inscribirse';
+
+  @override
+  String get signUpText => "No tienes una cuenta?";
+  @override
+  String get sizedBox=> "INICIAR SESIÓN";
+  @override
+  String get phone=> "teléfono ";
+  @override
+  String get name=> "nombre";
+  @override
+  String get city=> "ciudad ";
+  @override
+  String get terms=> "Acepto todos los términos y condiciones" ;
+
+  @override
+  String get invalidNumber=>"Numero de celular invalido";
+
 }

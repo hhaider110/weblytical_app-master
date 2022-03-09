@@ -13,6 +13,8 @@ import 'ui_ar.dart';
 import 'ui_de.dart';
 import 'ui_en.dart';
 import 'ui_hi.dart';
+import 'ui_nl.dart';
+import 'ui_tr.dart';
 
 /// Callers can lookup localized strings with an instance of AppLocalizations returned
 /// by `AppLocalizations.of(context)`.
@@ -99,7 +101,9 @@ abstract class ui {
     Locale('de'),
     Locale('en'),
     Locale('es'),
-    Locale('hi')
+    Locale('hi'),
+    Locale('nl'),
+    Locale('tr')
   ];
 
   /// The current Language
@@ -113,8 +117,14 @@ abstract class ui {
   String get  passwordTextFormField ;
   String get  forgetPassTextRow ;
   String get recover;
-
-
+  String get signUpText;
+  String get sizedBox;
+  String get phone;
+  String get name;
+  String get city;
+  String get terms;
+  String get invalidNumber;
+  // String get CustomButton;
 }
 
 // ignore: camel_case_types
@@ -127,7 +137,7 @@ class _uiDelegate extends LocalizationsDelegate<ui> {
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'de', 'en', 'es', 'hi'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'de', 'en', 'es', 'hi','tr','nl'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_uiDelegate old) => false;
@@ -143,6 +153,8 @@ ui lookupui(Locale locale) {
     case 'en': return uiEn();
     case 'es': return uiEs();
     case 'hi': return uiHi();
+    case 'nl': return uiNL();
+    case 'tr': return uiTR();
   }
 
   throw FlutterError(
@@ -152,3 +164,5 @@ ui lookupui(Locale locale) {
           'that was used.'
   );
 }
+
+

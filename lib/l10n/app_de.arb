@@ -1,15 +1,31 @@
 {
-    "welcomeText": "welkom bij AimsysCloud",
+    "welcomeText": "Willkommen bei AimsysCloud",
 
-    "signintoyouraccount": "Log in op uw account",
+    "signintoyouraccount": "Melden Sie sich bei Ihrem Konto an",
 
-    "Signup()": "herstellen",
+    "signUpTextRow": "Anmeldung",
 
-    "emailTextFormField": "E-mail identiteit",
+    "emailTextFormField": " E-Mail-Id",
 
-    "passwordTextFormField" :"Password",
+    "passwordTextFormField" :"Passwort",
 
-    "forgetPassTextRow": "wachtwoord?",
+    "forgetPassTextRow": "Haben Sie Ihr Passwort vergessen?",
 
-    "recover": "Aanmelden"
+    "recover": "Wiederherstellung",
+
+    "signUpText": "Sie haben kein Konto?",
+
+    "sizedBox": "Aanmelden",
+
+    "phone": " telefon",
+
+     "name": "Name",
+
+     "city": " Stadt ",
+
+   " terms": "Ich akzeptiere alle Bedingungen",
+
+    "invalidNumber":"ungültige Telefon-nummer"
+
+
 }

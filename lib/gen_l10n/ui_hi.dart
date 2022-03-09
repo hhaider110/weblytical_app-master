@@ -10,7 +10,7 @@ class uiHi extends ui {
   uiHi([String locale = 'hi']) : super(locale);
 
   @override
-  String get welcomeText => ' में आपका स्वागत है';
+  String get welcomeText => 'ऐम्सिसक्लाउड में आपका स्वागत है';
 
   @override
   String get signintoyouraccount => 'अपने अकाउंट में साइन इन करें';
@@ -29,4 +29,20 @@ class uiHi extends ui {
 
   @override
   String get recover => 'की वसूली';
+
+  @override
+  String get signUpText => "खाता नहीं है?";
+  @override
+  String get sizedBox=> "साइन इन करें";
+
+  @override
+  String get phone=> "फ़ोन";
+  @override
+  String get name=> "नाम";
+  @override
+  String get city=> "शहर ";
+  @override
+  String get terms=> "मुझे सभी नियम और शर्तें स्वीकार हैं" ;
+  @override
+  String get invalidNumber=>"अमान्य मोबाइल नंबर";
 }

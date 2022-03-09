@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:provider/provider.dart';
 import 'package:ui/constants/constants.dart';
 import 'package:ui/ui/screens/dashboard.dart';
 import 'package:ui/ui/widgets/custom_button.dart';
@@ -11,6 +12,9 @@ import 'package:ui/ui/widgets/responsive_ui.dart';
 import 'package:ui/ui/widgets/textformfield.dart';
 import 'package:http/http.dart' as http;
 import 'package:ui/utils/validator.dart';
+import 'package:ui/gen_l10n/ui.dart';
+import 'package:ui/l10n/l10n.dart';
+import '../../locale_provider.dart';
 // import 'package:ui/utils/validator.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -51,6 +55,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
+    final locale = provider.locale ?? Locale('en');
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
     _pixelRatio = MediaQuery.of(context).devicePixelRatio;
@@ -68,13 +74,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               clipShape(),
               form(),
-              acceptTermsTextRow(),
+              acceptTermsTextRow(ui.of(context)!.terms),
               SizedBox(height: _height / 60),
               CustomButton(
                 large: _large,
                 width: _width,
                 medium: _medium,
-                text: 'SIGN UP',
+                text: (ui.of(context)!.signUpTextRow),
                 onPressed: () {
                   AuthClass().register(
                     nameController.text,
@@ -173,22 +179,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
         key: _key,
         child: Column(
           children: <Widget>[
-            nameTextFormField(),
+            nameTextFormField(ui.of(context)!.name),
             SizedBox(height: _height / 60.0),
-            cityTextField(),
+            cityTextField(ui.of(context)!.city),
             SizedBox(height: _height / 60.0),
-            emailTextFormField(),
+            emailTextFormField(ui.of(context)!.emailTextFormField),
             SizedBox(height: _height / 60.0),
-            phoneTextFormField(),
+            phoneTextFormField(ui.of(context)!.phone),
             SizedBox(height: _height / 60.0),
-            passwordTextFormField(),
+            passwordTextFormField(ui.of(context)!.passwordTextFormField),
           ],
         ),
       ),
     );
   }
 
-  Widget nameTextFormField() {
+  Widget nameTextFormField(text) {
     return CustomTextField(
       validator: (name) {
         setState(() {
@@ -200,11 +206,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       textEditingController: nameController,
       keyboardType: TextInputType.text,
       icon: Icons.person,
-      hint: "Name",
+      hint: text,
     );
   }
 
-  Widget cityTextField() {
+  Widget cityTextField(text) {
     return CustomTextField(
       validator: (city) {
         setState(() {
@@ -215,11 +221,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       textEditingController: cityController,
       keyboardType: TextInputType.text,
       icon: Icons.location_city,
-      hint: "City",
+      hint: text,
     );
   }
 
-  Widget emailTextFormField() {
+  Widget emailTextFormField(text) {
     return CustomTextField(
       validator: (email) {
         setState(() {
@@ -230,11 +236,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       textEditingController: emailController,
       keyboardType: TextInputType.emailAddress,
       icon: Icons.email,
-      hint: "Email ID",
+      hint: text,
     );
   }
 
-  Widget passwordTextFormField() {
+  Widget passwordTextFormField(text) {
     return PasswordField(
       validator: (password) {
         setState(() {
@@ -259,11 +265,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
           });
         },
       ),
-      hint: "Password",
+      hint: text,
     );
   }
 
-  Widget acceptTermsTextRow() {
+  Widget acceptTermsTextRow(text) {
     return Container(
       margin: EdgeInsets.only(top: _height / 80.0),
       child: Row(
@@ -285,7 +291,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
           Text(
-            "I accept all terms and conditions",
+            text,
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: _large ? 12 : (_medium ? 11 : 10),
@@ -297,7 +303,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget phoneTextFormField() {
+  Widget phoneTextFormField(text) {
     return Material(
       borderRadius: BorderRadius.circular(30.0),
       elevation: _large ? 12 : (_medium ? 10 : 8),
@@ -313,7 +319,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         decoration: InputDecoration(
           fillColor: backgroundColor,
           filled: true,
-          hintText: 'Phone Number',
+          hintText: text,
           hintStyle: TextStyle(color: Colors.grey[600]),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
@@ -324,7 +330,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         disableLengthCheck: true,
         flagsButtonPadding: EdgeInsets.zero,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        invalidNumberMessage: 'Invalid mobile number',
+        invalidNumberMessage: (text),
         // validator: ,
         dropdownIcon: Icon(
           Icons.arrow_drop_down,
@@ -332,7 +338,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           color: Colors.orange[200],
         ),
         onChanged: (value) {
-          setState(() {
+          setState(() {ui.of(context)!.invalidNumber;
             onChangeValue = value.completeNumber;
           });
         },

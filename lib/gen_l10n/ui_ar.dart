@@ -5,26 +5,45 @@ import 'ui.dart';
 class uiAr extends ui {
   uiAr([String locale = 'ar']) : super(locale);
   @override
-  String get welcomeText => 'Welcome To AimsysCloud';
+  String get welcomeText => '   مرحبًا بك فيأهداف';
 
   @override
-  String get signintoyouraccount => 'Sign in to your account';
+  String get signintoyouraccount => '  تسجيل الدخول إلى حسابك';
 
   @override
-  String get signUpTextRow => 'Signup';
+  String get signUpTextRow => 'اشتراك';
 
   @override
-  String get emailTextFormField => 'Email ID';
+  String get emailTextFormField => 'عنوان الايميل';
 
 
   @override
-  String get passwordTextFormField => 'Email ID';
+  String get passwordTextFormField => 'كلمه السر';
 
   @override
-  String get forgetPassTextRow => 'Forgot your password?';
+  String get forgetPassTextRow => 'نسيت رقمك السري؟';
 
   @override
-  String get recover => 'recover';
+  String get recover => 'استعادة';
+
+  @override
+  String get signUpText => "ليس لديك حساب؟";
+  @override
+  String get sizedBox=> "تسجيل الدخول";
+
+  @override
+  String get phone=> " هاتف";
+  @override
+  String get name=> "اسم";
+  @override
+  String get city=> " مدينة";
+  @override
+  String get terms=> "أوافق على جميع الشروط والأحكام" ;
+
+  @override
+  String get invalidNumber=>"رقم الجوال غير صالح";
+
+
 }
 
 

@@ -9,7 +9,16 @@
 
    " passwordTextFormField": "Identificación de correo",
 
-    "forgetPassTextRow": "Clave",
+    "forgetPassTextRow": "Clave?",
 
-    "recover": "Inscribirse"
+    "recover": "Inscribirse",
+
+     "sizedBox": "INICIAR SESIÓN",
+ "phone": "teléfono ",
+ "name": "nombre",
+  "city": "ciudad ",
+  "terms": "Acepto todos los términos y condiciones",
+  "invalidNumber": "Numero de celular invalido"
+
+
 }

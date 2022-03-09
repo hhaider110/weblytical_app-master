@@ -15,27 +15,27 @@ class DashBoardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
-           const  Header(),
+            const  Header(),
             const SizedBox(height: defaultPadding),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 5,
-                  child: Column(
-                    children: [
-                     const Stats(),
-                      const SizedBox(height: defaultPadding),
-                      const Audience(),
-                      if (Responsive.isMobile(context))
-                      const SizedBox(height: defaultPadding),
-                    ],
-                  ),
-                ),
-                if (!Responsive.isMobile(context))
-                  const SizedBox(width: defaultPadding),
-              ],
-            )
+            // Row(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     Expanded(
+            //       flex: 5,
+            //       child: Column(
+            //         children: [
+            //         //  const Stats(),
+            //           const SizedBox(height: defaultPadding),
+            //           const Audience(),
+            //           if (Responsive.isMobile(context))
+            //           const SizedBox(height: defaultPadding),
+            //         ],
+            //       ),
+            //     ),
+            //     if (!Responsive.isMobile(context))
+            //       const SizedBox(width: defaultPadding),
+            //   ],
+            // )
           ],
         ),
       ),

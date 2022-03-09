@@ -1,0 +1,31 @@
+{
+  "welcomeText": "welkom bij AimsysCloud",
+
+  "signintoyouraccount": "Log in op uw account",
+
+  "signUpTextRow": "Aanmelden",
+
+  "emailTextFormField": " identiteit",
+
+  "passwordTextFormField" :"wachtwoord",
+
+  "forgetPassTextRow": "uw wachtwoord vergeten?",
+
+  "recover": "herstellen",
+
+  "signUpText": "Heb je geen account?",
+
+  "sizedBox": "AANMELDEN",
+
+  "phone": "Telefoon",
+
+  "name": "Naam",
+
+  "city": " Stad ",
+
+  " terms": "Ik accepteer alle voorwaarden",
+
+  "invalidNumber":"Ongeldig telefoonnummer"
+
+
+}
